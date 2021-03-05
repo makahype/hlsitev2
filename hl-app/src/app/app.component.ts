@@ -109,10 +109,11 @@ export class AppComponent {
 
     var ani2: any;
     ani2 = {};
-    ani2.time = 555 * 30;
+    ani2.time = 700 * 30;
     ani2.type = 'waltz';
     ani2.default_angle = 1;
-    ani2.spin_speed = {50:3, 100: 5, 200: 10, 300: 20, 450: 10, 480: 5, 500: 3, 520: 2};
+    ani2.spin_speed = {50:3, 100: 5, 200: 10, 300: 20, 450: 10, 520: 5, 600: 3, 
+    650: 0};
     ani2.animations = [];
     ani2.animations.push({
       id: 'dot1',

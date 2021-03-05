@@ -91,23 +91,27 @@ export class DancingdotsService {
         var dance_in_circles = function() {
 
             //change spin speed if desired
-            if(state.spin_speed[timer]){
+            if(state.spin_speed[timer] || state.spin_speed[timer] === 0){
                 delta_angle = state.spin_speed[timer]
             }
 
 
             animations.forEach(function(item){
 
-                //change angle for this item
-                item.angle = item.angle + delta_angle;
-                if(item.angle >= 360){
-                    item.angle = 0;
+                if(delta_angle > 0){
+
+                    //change angle for this item
+                    item.angle = item.angle + delta_angle;
+                    if(item.angle >= 360){
+                        item.angle = 0;
+                    }
+
+                    //use angle to calculate placement
+                    var dot = document.getElementById(item.id);
+                    dot.style.left = item.mid_x + item.radius * Math.cos(item.angle * Math.PI / 180) + "px";
+                    dot.style.top = item.mid_y + item.radius * Math.sin(item.angle * Math.PI / 180) + "px";                           
                 }
 
-                //use angle to calculate placement
-                var dot = document.getElementById(item.id);
-                dot.style.left = item.mid_x + item.radius * Math.cos(item.angle * Math.PI / 180) + "px";
-                dot.style.top = item.mid_y + item.radius * Math.sin(item.angle * Math.PI / 180) + "px";                           
 
             });
 
